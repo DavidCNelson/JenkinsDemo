@@ -18,6 +18,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Run tests here...'
+	sh 'runtest.sh'
       }
     }
     stage('Deploy') {
