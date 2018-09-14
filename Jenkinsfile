@@ -1,19 +1,24 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      parallel {
-        stage('build') {
+    stage('Build') {
+      stages {
+        stage('init build') {
           steps {
             echo 'Get the version of Java'
             sh 'java -version'
           }
         }
-        stage('build tools') {
+        stage('build lib') {
           steps {
-            sh 'echo build tools here...'
+            sh 'echo build library here...'
             // This seems to require cmake be installed, even it already is available on the machine.
             //cmakeBuild(buildDir: 'cmake-debug-build', buildType: 'Debug', sourceDir: '.', installation: 'cmake')
+          }
+        }
+        stage('build exe') {
+          steps {
+            sh 'echo build the executable here...'
           }
         }
       }
