@@ -5,6 +5,7 @@ pipeline {
       parallel {
         stage('build') {
           steps {
+            echo 'Get the version of Java'
             sh 'java -version'
           }
         }
@@ -16,9 +17,19 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        echo 'Run tests here...'
-	sh 'runtest.sh'
+      parallel {
+        stage('Test 1') {
+          steps {
+            echo 'Run failure test here...'
+            sh 'runtest.sh'
+          }
+        }
+        stage('Test 2') {
+          steps {
+            echo 'Run success test here...'
+            sh 'runtest.sh 0'
+          }
+        }
       }
     }
     stage('Deploy') {
