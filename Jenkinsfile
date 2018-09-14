@@ -12,7 +12,8 @@ pipeline {
         stage('build tools') {
           steps {
             sh 'echo build tools here...'
-            cmakeBuild(buildDir: 'cmake-debug-build', buildType: 'Debug', sourceDir: '.', installation: 'cmake')
+            // This seems to require cmake be installed, even it already is available on the machine.
+            //cmakeBuild(buildDir: 'cmake-debug-build', buildType: 'Debug', sourceDir: '.', installation: 'cmake')
           }
         }
       }
