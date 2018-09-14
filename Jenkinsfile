@@ -12,6 +12,7 @@ pipeline {
         stage('build tools') {
           steps {
             sh 'echo build tools here...'
+            cmakeBuild(buildDir: 'cmake-debug-build', buildType: 'Debug', sourceDir: '.', installation: 'cmake')
           }
         }
       }
