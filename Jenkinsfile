@@ -21,13 +21,13 @@ pipeline {
         stage('Test 1') {
           steps {
             echo 'Run failure test here...'
-            sh 'runtest.sh'
+            sh './runtest.sh'
           }
         }
         stage('Test 2') {
           steps {
             echo 'Run success test here...'
-            sh 'runtest.sh 0'
+            sh './runtest.sh 0'
           }
         }
       }
